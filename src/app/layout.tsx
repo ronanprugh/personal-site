@@ -12,6 +12,30 @@ export const metadata: Metadata = {
   title: "Ronan Prugh — Software Engineer",
   description:
     "Software engineer building cloud billing systems, AI-powered developer tools, and full-stack products. Michigan CS '23.",
+  openGraph: {
+    title: "Ronan Prugh — Software Engineer",
+    description:
+      "Software engineer building cloud billing systems, AI-powered developer tools, and full-stack products. Michigan CS '23.",
+    url: "https://ronanprugh.com",
+    siteName: "Ronan Prugh",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ronan Prugh — Software Engineer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ronan Prugh — Software Engineer",
+    description:
+      "Software engineer building cloud billing systems, AI-powered developer tools, and full-stack products. Michigan CS '23.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({

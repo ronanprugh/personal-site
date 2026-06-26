@@ -138,7 +138,7 @@
 
 ---
 
-### [ ] 4.0 SEO, Open Graph, Print-CSS Resume & Custom Domain
+### [~] 4.0 SEO, Open Graph, Print-CSS Resume & Custom Domain
 
 **Purpose:** Polish the site for real-world sharing — proper social link previews, a clean printable resume, and a custom domain with HTTPS.
 
