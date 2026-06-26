@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,7 +11,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   title: "Ronan Prugh — Software Engineer",
   description:
-    "Software engineer with a passion for building great products. View my experience, projects, and more.",
+    "Software engineer building cloud billing systems, AI-powered developer tools, and full-stack products. Michigan CS '23.",
 };
 
 export default function RootLayout({
@@ -21,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} dark`} suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.variable} scroll-smooth dark`} suppressHydrationWarning>
       <head>
         {/* No-flash theme script: reads localStorage before React hydrates */}
         <script
@@ -31,12 +30,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-dvh flex flex-col antialiased">
-        <ThemeProvider>
-          <header className="flex items-center justify-end px-6 py-4">
-            <ThemeToggle />
-          </header>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

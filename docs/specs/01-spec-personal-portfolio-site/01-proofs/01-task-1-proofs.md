@@ -121,12 +121,12 @@ behavior is implemented correctly.
 
 **Key implementation decisions:**
 
-| Decision | Choice | Reason |
-|---|---|---|
-| Dark mode strategy | `@variant dark (&:where(.dark, .dark *))` in globals.css | Tailwind v4 CSS-first config; no tailwind.config.ts |
-| No-flash | Inline `<script>` in `layout.tsx` `<head>` | Runs before React hydrates; sets `.dark`/`.light` on `<html>` |
-| State initialization | Lazy `useState(resolveInitialTheme)` | Avoids `setTheme` in `useEffect` (eliminates lint violation) |
-| Default class | `dark` on `<html>` in layout + `suppressHydrationWarning` | Server render defaults to dark; client corrects if needed |
+| Decision             | Choice                                                    | Reason                                                        |
+| -------------------- | --------------------------------------------------------- | ------------------------------------------------------------- |
+| Dark mode strategy   | `@variant dark (&:where(.dark, .dark *))` in globals.css  | Tailwind v4 CSS-first config; no tailwind.config.ts           |
+| No-flash             | Inline `<script>` in `layout.tsx` `<head>`                | Runs before React hydrates; sets `.dark`/`.light` on `<html>` |
+| State initialization | Lazy `useState(resolveInitialTheme)`                      | Avoids `setTheme` in `useEffect` (eliminates lint violation)  |
+| Default class        | `dark` on `<html>` in layout + `suppressHydrationWarning` | Server render defaults to dark; client corrects if needed     |
 
 **globals.css dark variant declaration:**
 
@@ -138,14 +138,14 @@ behavior is implemented correctly.
 **No-flash inline script in layout.tsx:**
 
 ```js
-(function(){
+(function () {
   try {
-    var t=localStorage.getItem('theme');
-    var d=window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme=t||(d?'dark':'light');
-    document.documentElement.classList.remove('dark','light');
+    var t = localStorage.getItem("theme");
+    var d = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var theme = t || (d ? "dark" : "light");
+    document.documentElement.classList.remove("dark", "light");
     document.documentElement.classList.add(theme);
-  } catch(e) {}
+  } catch (e) {}
 })();
 ```
 

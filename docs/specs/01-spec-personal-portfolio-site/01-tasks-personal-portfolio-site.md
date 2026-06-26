@@ -80,7 +80,7 @@
 
 ---
 
-### [ ] 2.0 Core Content Sections — Hero, About, Experience, Education, Skills
+### [x] 2.0 Core Content Sections — Hero, About, Experience, Education, Skills
 
 **Purpose:** Render all resume-equivalent sections with typed data-driven content, a sticky nav with smooth-scroll, and full mobile responsiveness — making the site shareable as a resume replacement.
 

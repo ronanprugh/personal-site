@@ -1,10 +1,29 @@
+import { Nav } from "@/components/Nav";
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
+import { Education } from "@/components/sections/Education";
+import { Skills } from "@/components/sections/Skills";
+
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-4 px-6 py-24">
-      <h1 className="text-4xl font-semibold tracking-tight text-[var(--foreground)]">
-        Ronan Prugh
-      </h1>
-      <p className="text-[var(--muted)]">Portfolio coming soon.</p>
-    </main>
+    <>
+      <Nav />
+      <main className="flex-1">
+        <Hero />
+        <div className="border-t border-[var(--border)]">
+          <About />
+        </div>
+        <div className="border-t border-[var(--border)]">
+          <Experience />
+        </div>
+        <div className="border-t border-[var(--border)]">
+          <Education />
+        </div>
+        <div className="border-t border-[var(--border)]">
+          <Skills />
+        </div>
+      </main>
+    </>
   );
 }
