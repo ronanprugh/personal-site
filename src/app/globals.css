@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Class-based dark mode — toggled by ThemeProvider setting .dark on <html> */
+@variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #ededed;
+  --accent: #818cf8; /* indigo-400 */
+  --muted: #71717a;
+  --card: #111118;
+  --border: #27272a;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #111118;
+  --accent: #4f46e5; /* indigo-600 */
+  --muted: #71717a;
+  --card: #f4f4f5;
+  --border: #e4e4e7;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100dvh;
+}
+
+/* ─── Print / Resume Download ─────────────────────────────────────────────── */
+@media print {
+  /* Show white page */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111118 !important;
+    font-size: 11pt;
+  }
+
+  /* Hide non-resume UI */
+  nav,
+  .print-hide,
+  .hero-ctas,
+  .projects-section,
+  .theme-toggle {
+    display: none !important;
+  }
+
+  /* Remove decorative gradients and animations */
+  * {
+    animation: none !important;
+    transition: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Single-column resume layout */
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 20pt;
+  }
+  h2 {
+    font-size: 14pt;
+    border-bottom: 1pt solid #e4e4e7;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+  }
+  h3 {
+    font-size: 12pt;
+  }
+
+  a {
+    color: #111118 !important;
+    text-decoration: none;
+  }
+}
