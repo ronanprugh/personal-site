@@ -111,7 +111,7 @@
 
 ---
 
-### [ ] 3.0 Project Showcase — Grid & Detail Pages
+### [x] 3.0 Project Showcase — Grid & Detail Pages
 
 **Purpose:** Add a data-driven Projects section to the homepage and statically-generated `/projects/[slug]` detail pages for `score-mate` and `espn-fantasy-stats`, with a structure that makes adding future projects a one-line data change.
 

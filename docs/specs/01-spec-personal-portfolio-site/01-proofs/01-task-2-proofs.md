@@ -117,12 +117,12 @@ strings in components, and no PII fields exist on any exported type.
 
 **Files created:**
 
-| File | Content |
-|------|---------|
-| `src/data/profile.ts` | `name`, `tagline`, `about`, `githubUrl`, `linkedinUrl` — no phone/email |
-| `src/data/experience.ts` | 3 entries: Fiserv (Jun 2023–Present), UMTRI (Jun 2022–Mar 2023), CSG (Jun 2020–Aug 2021) |
-| `src/data/education.ts` | University of Michigan, B.S.E. CSE, Magna Cum Laude, May 2023 |
-| `src/data/skills.ts` | 4 categories: Programming Languages, Frameworks & Libraries, Tools & Platforms, Practices |
+| File                     | Content                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `src/data/profile.ts`    | `name`, `tagline`, `about`, `githubUrl`, `linkedinUrl` — no phone/email                   |
+| `src/data/experience.ts` | 3 entries: Fiserv (Jun 2023–Present), UMTRI (Jun 2022–Mar 2023), CSG (Jun 2020–Aug 2021)  |
+| `src/data/education.ts`  | University of Michigan, B.S.E. CSE, Magna Cum Laude, May 2023                             |
+| `src/data/skills.ts`     | 4 categories: Programming Languages, Frameworks & Libraries, Tools & Platforms, Practices |
 
 ---
 
@@ -133,14 +133,14 @@ render data from `src/data/` rather than inline strings.
 
 **Components:**
 
-| Component | Pattern |
-|-----------|---------|
-| `src/components/Nav.tsx` | Sticky glass nav; hidden mobile links (`hidden md:flex`); logo left, ThemeToggle right |
-| `src/components/sections/Hero.tsx` | `"use client"` for print button; inline SVG GitHub + LinkedIn icons; `next/image` circular headshot |
-| `src/components/sections/About.tsx` | Server component; renders `profile.about` |
-| `src/components/sections/Experience.tsx` | Vertical timeline with `before:` pseudo-element connector line; absolute positioned dots |
-| `src/components/sections/Education.tsx` | Card with border/card bg CSS variables |
-| `src/components/sections/Skills.tsx` | Pill badges: `rounded-full border border-[var(--border)] bg-[var(--card)]` |
+| Component                                | Pattern                                                                                             |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `src/components/Nav.tsx`                 | Sticky glass nav; hidden mobile links (`hidden md:flex`); logo left, ThemeToggle right              |
+| `src/components/sections/Hero.tsx`       | `"use client"` for print button; inline SVG GitHub + LinkedIn icons; `next/image` circular headshot |
+| `src/components/sections/About.tsx`      | Server component; renders `profile.about`                                                           |
+| `src/components/sections/Experience.tsx` | Vertical timeline with `before:` pseudo-element connector line; absolute positioned dots            |
+| `src/components/sections/Education.tsx`  | Card with border/card bg CSS variables                                                              |
+| `src/components/sections/Skills.tsx`     | Pill badges: `rounded-full border border-[var(--border)] bg-[var(--card)]`                          |
 
 ---
 
