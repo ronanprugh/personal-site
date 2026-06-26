@@ -51,7 +51,7 @@
 
 ## Tasks
 
-### [ ] 1.0 Project Scaffold, Theme System & Vercel Deployment
+### [x] 1.0 Project Scaffold, Theme System & Vercel Deployment
 
 **Purpose:** Initialize the Next.js 16 repo with pnpm, configure Tailwind v4 with dark-mode-first class strategy, wire up the theme toggle, and deploy to Vercel — establishing the live URL and CI/CD pipeline that all subsequent units ship to.
 
@@ -64,19 +64,19 @@
 
 #### 1.0 Tasks
 
-- [ ] 1.1 Run `pnpm create next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*"` in the repo root; select **pnpm** as the package manager when prompted; verify `src/app/` and `src/app/globals.css` were created.
-- [ ] 1.2 In `src/app/globals.css`, replace the default Tailwind v3 directives with `@import "tailwindcss";` (Tailwind v4 syntax) and add `@variant dark (&:where(.dark, .dark *));` to enable class-based dark mode.
-- [ ] 1.3 Configure ESLint: install `eslint-config-next`, `eslint-config-prettier`; create `eslint.config.mjs` using the flat-config format from `score-mate/eslint.config.mjs` (`core-web-vitals` + `typescript` + `prettier`).
-- [ ] 1.4 Configure Prettier: add `.prettierrc` with settings matching `score-mate` (e.g., `"semi": true`, `"singleQuote": false`, `"trailingComma": "es5"`).
-- [ ] 1.5 Set up commitlint: `pnpm add -D @commitlint/cli @commitlint/config-conventional`; create `commitlint.config.mjs` identical to `score-mate/commitlint.config.mjs`.
-- [ ] 1.6 Create `src/components/ThemeProvider.tsx` as a `"use client"` component that (a) reads `localStorage.getItem("theme")` on mount, (b) falls back to `window.matchMedia("(prefers-color-scheme: dark)")`, and (c) adds/removes the `dark` class on `document.documentElement`; expose a `toggleTheme` function via React context.
-- [ ] 1.7 Create `src/components/ThemeToggle.tsx` as a `"use client"` button component that consumes the `ThemeProvider` context and renders a sun/moon icon from `lucide-react` (install if not present); the button shall have `min-h-11 min-w-11` for touch target compliance.
-- [ ] 1.8 Update `src/app/layout.tsx` to wrap children in `ThemeProvider` and include `<ThemeToggle />` in a temporary placeholder header (will be replaced in Task 2.0 by the full `Nav` component).
-- [ ] 1.9 Replace the contents of `src/app/page.tsx` with a minimal placeholder: centered `<h1>Ronan Prugh</h1>` and `<p>Coming soon</p>` — no personal contact info.
-- [ ] 1.10 Create `AGENTS.md` at the repo root documenting repo conventions: stack (Next.js 16, Tailwind v4, pnpm, Vitest), file layout (`src/app/`, `src/components/`, `src/data/`), quality gates (`pnpm lint`, `pnpm typecheck`, `pnpm format:check`, `pnpm test:ci`), commit format (conventional commits), and SDD workflow path (`docs/specs/`).
-- [ ] 1.11 Create `README.md` with: project description, local setup (`pnpm install`, `pnpm dev`), available scripts, and link to `docs/specs/` for architecture context.
-- [ ] 1.12 Create `.github/workflows/ci.yml` that runs on every push and PR: steps are `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`, `pnpm format:check`, and `pnpm test:ci`; use `actions/setup-node` with the pnpm caching strategy.
-- [ ] 1.13 Initialize git, commit everything with `chore: initial Next.js 16 scaffold with Tailwind v4 and theme system`, push to a new GitHub repository, and connect the repo to a new Vercel project (Vercel dashboard → "Import Git Repository"); confirm first deploy is green.
+- [x] 1.1 Run `pnpm create next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*"` in the repo root; select **pnpm** as the package manager when prompted; verify `src/app/` and `src/app/globals.css` were created.
+- [x] 1.2 In `src/app/globals.css`, replace the default Tailwind v3 directives with `@import "tailwindcss";` (Tailwind v4 syntax) and add `@variant dark (&:where(.dark, .dark *));` to enable class-based dark mode.
+- [x] 1.3 Configure ESLint: install `eslint-config-next`, `eslint-config-prettier`; create `eslint.config.mjs` using the flat-config format from `score-mate/eslint.config.mjs` (`core-web-vitals` + `typescript` + `prettier`).
+- [x] 1.4 Configure Prettier: add `.prettierrc` with settings matching `score-mate` (e.g., `"semi": true`, `"singleQuote": false`, `"trailingComma": "es5"`).
+- [x] 1.5 Set up commitlint: `pnpm add -D @commitlint/cli @commitlint/config-conventional`; create `commitlint.config.mjs` identical to `score-mate/commitlint.config.mjs`.
+- [x] 1.6 Create `src/components/ThemeProvider.tsx` as a `"use client"` component that (a) reads `localStorage.getItem("theme")` on mount, (b) falls back to `window.matchMedia("(prefers-color-scheme: dark)")`, and (c) adds/removes the `dark` class on `document.documentElement`; expose a `toggleTheme` function via React context.
+- [x] 1.7 Create `src/components/ThemeToggle.tsx` as a `"use client"` button component that consumes the `ThemeProvider` context and renders a sun/moon icon from `lucide-react` (install if not present); the button shall have `min-h-11 min-w-11` for touch target compliance.
+- [x] 1.8 Update `src/app/layout.tsx` to wrap children in `ThemeProvider` and include `<ThemeToggle />` in a temporary placeholder header (will be replaced in Task 2.0 by the full `Nav` component).
+- [x] 1.9 Replace the contents of `src/app/page.tsx` with a minimal placeholder: centered `<h1>Ronan Prugh</h1>` and `<p>Coming soon</p>` — no personal contact info.
+- [x] 1.10 Create `AGENTS.md` at the repo root documenting repo conventions: stack (Next.js 16, Tailwind v4, pnpm, Vitest), file layout (`src/app/`, `src/components/`, `src/data/`), quality gates (`pnpm lint`, `pnpm typecheck`, `pnpm format:check`, `pnpm test:ci`), commit format (conventional commits), and SDD workflow path (`docs/specs/`).
+- [x] 1.11 Create `README.md` with: project description, local setup (`pnpm install`, `pnpm dev`), available scripts, and link to `docs/specs/` for architecture context.
+- [x] 1.12 Create `.github/workflows/ci.yml` that runs on every push and PR: steps are `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`, `pnpm format:check`, and `pnpm test:ci`; use `actions/setup-node` with the pnpm caching strategy.
+- [x] 1.13 Initialize git, commit everything with `chore: initial Next.js 16 scaffold with Tailwind v4 and theme system`, push to a new GitHub repository, and connect the repo to a new Vercel project (Vercel dashboard → "Import Git Repository"); confirm first deploy is green.
 
 ---
 
