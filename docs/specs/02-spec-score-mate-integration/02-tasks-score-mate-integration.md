@@ -2,12 +2,12 @@
 
 ## Relevant Files
 
-| File | Why It Is Relevant |
-| --- | --- |
-| `next.config.ts` | Portfolio repo entry point — add `rewrites()` function here (Task 2.0). |
-| `docs/specs/02-spec-score-mate-integration/02-notes-prerequisites.md` | New file — record the resolved ScoreMate Vercel URL and confirmed `NEXTAUTH_URL` value from Task 1.0. |
-| `docs/specs/02-spec-score-mate-integration/02-proofs/` | Directory for all proof-artifact screenshots and supporting evidence (created when first proof is saved). |
-| `[ScoreMate repo]/next.config.js` (or `.ts`) | ScoreMate's Next.js config — add `basePath: '/ScoreMate'` here (Task 3.0). This file is in the separate ScoreMate repository. |
+| File                                                                  | Why It Is Relevant                                                                                                            |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `next.config.ts`                                                      | Portfolio repo entry point — add `rewrites()` function here (Task 2.0).                                                       |
+| `docs/specs/02-spec-score-mate-integration/02-notes-prerequisites.md` | New file — record the resolved ScoreMate Vercel URL and confirmed `NEXTAUTH_URL` value from Task 1.0.                         |
+| `docs/specs/02-spec-score-mate-integration/02-proofs/`                | Directory for all proof-artifact screenshots and supporting evidence (created when first proof is saved).                     |
+| `[ScoreMate repo]/next.config.js` (or `.ts`)                          | ScoreMate's Next.js config — add `basePath: '/ScoreMate'` here (Task 3.0). This file is in the separate ScoreMate repository. |
 
 ### Notes
 
@@ -20,7 +20,7 @@
 
 ## Tasks
 
-### [~] 1.0 Resolve Prerequisites — Confirm ScoreMate Vercel URL and NEXTAUTH_URL Value
+### [x] 1.0 Resolve Prerequisites — Confirm ScoreMate Vercel URL and NEXTAUTH_URL Value
 
 **Context:** Two open questions from the spec must be answered before any code is written. This task is pure discovery — no code changes. The outputs become inputs for Tasks 2.0 and 3.0.
 
@@ -46,7 +46,7 @@
 
 ---
 
-### [ ] 2.0 Add URL Rewrite to Portfolio `next.config.ts`
+### [~] 2.0 Add URL Rewrite to Portfolio `next.config.ts`
 
 **Context:** The portfolio's `next.config.ts` is currently empty (just the default blank config). Add an async `rewrites()` function that proxies `/ScoreMate` and `/ScoreMate/:path*` to the ScoreMate Vercel URL confirmed in Task 1.0. This is the only code change in the portfolio repo for this spec.
 
@@ -59,7 +59,7 @@
 
 #### 2.0 Tasks
 
-- [ ] 2.1 Edit `next.config.ts` to add an async `rewrites()` function. Use the `NextConfig` type already imported in the file. The function should return a top-level array (not `beforeFiles`/`afterFiles`) with two rules:
+- [x] 2.1 Edit `next.config.ts` to add an async `rewrites()` function. Use the `NextConfig` type already imported in the file. The function should return a top-level array (not `beforeFiles`/`afterFiles`) with two rules:
   ```ts
   async rewrites() {
     return [
@@ -75,10 +75,10 @@
   },
   ```
   Replace `SCOREMATE_VERCEL_URL` with the URL confirmed in Task 1.1 (e.g., `https://score-mate-abc123.vercel.app`).
-- [ ] 2.2 Run `pnpm typecheck` locally and fix any TypeScript errors before committing.
-- [ ] 2.3 Run `pnpm lint` and `pnpm format:check` locally. If format check fails, run `pnpm format` and stage the formatted file.
-- [ ] 2.4 Run `pnpm test:ci` locally to confirm no test regressions.
-- [ ] 2.5 Commit using Conventional Commits: `feat: add ScoreMate URL rewrite to next.config.ts`. Include in the commit body: `Related to T2.1 in Spec 02-spec-score-mate-integration`.
+- [x] 2.2 Run `pnpm typecheck` locally and fix any TypeScript errors before committing.
+- [x] 2.3 Run `pnpm lint` and `pnpm format:check` locally. If format check fails, run `pnpm format` and stage the formatted file.
+- [x] 2.4 Run `pnpm test:ci` locally to confirm no test regressions.
+- [x] 2.5 Commit using Conventional Commits: `feat: add ScoreMate URL rewrite to next.config.ts`. Include in the commit body: `Related to T2.1 in Spec 02-spec-score-mate-integration`.
 - [ ] 2.6 Push the commit and confirm the portfolio's Vercel deployment completes successfully (check the Vercel dashboard for a green "Ready" status).
 - [ ] 2.6a Open the GitHub Actions tab for this repo and locate the CI run triggered by the push from step 2.5. Confirm all four checks (Lint, Type-check, Format check, Test) show green. Capture a screenshot of the CI run page and save to `docs/specs/02-spec-score-mate-integration/02-proofs/2.0-ci-pass.png`.
 - [ ] 2.7 Open `https://ronanprugh.com/ScoreMate` in a browser and capture a screenshot saved to `docs/specs/02-spec-score-mate-integration/02-proofs/2.0-scoremate-root.png`.
@@ -129,8 +129,8 @@
 
 - [ ] 4.1 Open [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials → click the OAuth 2.0 Client ID used by ScoreMate.
 - [ ] 4.2 Under "Authorized redirect URIs", click "Add URI" and enter:
-  `https://ronanprugh.com/ScoreMate/api/auth/callback/google`
-  (Use the exact path confirmed by Task 1.3 — adjust if Auth.js v5 uses a different callback path.)
+      `https://ronanprugh.com/ScoreMate/api/auth/callback/google`
+      (Use the exact path confirmed by Task 1.3 — adjust if Auth.js v5 uses a different callback path.)
 - [ ] 4.3 Save the client. **Do NOT remove the old Vercel-subdomain callback URI yet** — it keeps the old direct URL working during the transition.
 - [ ] 4.4 Open `https://ronanprugh.com/ScoreMate` in a fresh private/incognito browser window (to avoid cached session state).
 - [ ] 4.5 Click "Sign in with Google" and complete the OAuth flow end-to-end. Confirm the post-auth redirect lands back on `ronanprugh.com/ScoreMate/...`.

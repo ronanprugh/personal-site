@@ -17,6 +17,7 @@ Resolved open questions from the spec before implementation begins.
 **Confirmed value:** `AUTH_URL=https://ronanprugh.com/ScoreMate`
 
 **Rationale:**
+
 - Auth.js v5 uses `AUTH_URL` (not `NEXTAUTH_URL`) as the canonical base for auth route construction
 - Auth.js constructs callback paths as `{AUTH_URL}/api/auth/callback/{provider}`
 - With `basePath: '/ScoreMate'` set in ScoreMate's `next.config.ts`, Next.js prefixes all routes including `/api/auth/...` → actual accessible path becomes `/ScoreMate/api/auth/callback/google`

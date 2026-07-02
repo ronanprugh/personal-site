@@ -25,12 +25,14 @@ This spec defines the configuration work required to serve the ScoreMate applica
 **Purpose:** Configure the portfolio's `next.config.ts` to proxy all `/ScoreMate/*` requests to the existing ScoreMate Vercel deployment URL, making the app accessible at `ronanprugh.com/ScoreMate`.
 
 **Functional Requirements:**
+
 - The portfolio's `next.config.ts` shall export an async `rewrites()` function containing a rule that maps `source: '/ScoreMate'` and `source: '/ScoreMate/:path*'` to the corresponding paths on the ScoreMate Vercel deployment URL.
 - The rewrite shall preserve the full path suffix (`:path*`) so that deep links like `/ScoreMate/dashboard` resolve correctly inside ScoreMate.
 - The rewrite shall be added under the `afterFiles` array (or top-level, if no existing rewrite structure is present) so it does not override any portfolio-internal routes.
 - The portfolio's existing routes (`/`, `/projects/[slug]`, etc.) shall remain unaffected.
 
 **Proof Artifacts:**
+
 - Browser screenshot: `https://ronanprugh.com/ScoreMate` loads the ScoreMate home/login page in a production browser tab, demonstrating the rewrite is live.
 - Browser screenshot: navigating to a deep path (e.g., `ronanprugh.com/ScoreMate/dashboard` or equivalent) loads the correct ScoreMate page, demonstrating full path forwarding works.
 
@@ -41,12 +43,14 @@ This spec defines the configuration work required to serve the ScoreMate applica
 **Purpose:** Configure ScoreMate's Next.js app to know it is mounted under `/ScoreMate`, so internal links, API routes, and static asset paths are all prefixed correctly when accessed through the rewrite.
 
 **Functional Requirements:**
+
 - ScoreMate's `next.config` (in the ScoreMate repository) shall add `basePath: '/ScoreMate'` so all internal `<Link>` hrefs, `<Image>` src paths, and `router.push()` calls are automatically prefixed.
 - ScoreMate's Vercel project environment variables shall have `NEXTAUTH_URL` updated to the value confirmed in Open Question 1 (either `https://ronanprugh.com` or `https://ronanprugh.com/ScoreMate` — see Open Questions).
 - The ScoreMate CI/CD pipeline (Vercel build) shall pass with no errors after the `basePath` change.
 - Navigating within ScoreMate (e.g., from the login page to a protected route) shall not break or redirect to a raw Vercel URL.
 
 **Proof Artifacts:**
+
 - Browser screenshot: ScoreMate login page loads at `ronanprugh.com/ScoreMate` and the browser Network panel shows all internal asset requests (JS chunks, images) resolving under `/ScoreMate/...`, demonstrating basePath is applied.
 - Vercel dashboard screenshot: ScoreMate project shows a green "Ready" deployment after the `basePath` change.
 
@@ -57,12 +61,14 @@ This spec defines the configuration work required to serve the ScoreMate applica
 **Purpose:** Update the Google Cloud Console OAuth configuration and ScoreMate's auth environment so Google sign-in completes on `ronanprugh.com` without redirecting through the raw Vercel URL.
 
 **Functional Requirements:**
+
 - The Google Cloud Console OAuth 2.0 client for ScoreMate shall have `https://ronanprugh.com/ScoreMate/api/auth/callback/google` added as an authorized redirect URI (exact path depends on Open Question 1 resolution — see Open Questions).
 - The prior Vercel-subdomain callback URI may remain in Google Cloud Console temporarily to avoid breaking the non-proxied deployment URL during the transition; it can be removed once the new URI is confirmed working.
 - After the change, clicking "Sign in with Google" from `ronanprugh.com/ScoreMate` shall complete the OAuth flow and return the user to a ScoreMate page on `ronanprugh.com`, with no visible redirect to a Vercel subdomain.
 - Magic-link emails shall include a link to `ronanprugh.com/ScoreMate/api/auth/callback/...` rather than the raw Vercel URL.
 
 **Proof Artifacts:**
+
 - End-to-end screenshot sequence: (1) ScoreMate sign-in page at `ronanprugh.com/ScoreMate`, (2) Google account picker, (3) post-auth redirect landing back on `ronanprugh.com/ScoreMate/...` — demonstrates OAuth flow completes on the main domain.
 - (Optional) Magic-link email screenshot showing the callback link contains `ronanprugh.com/ScoreMate` demonstrates email-based auth also uses the correct domain.
 
