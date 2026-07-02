@@ -7,11 +7,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/ScoreMate",
-        destination: SCOREMATE_URL,
+        destination: `${SCOREMATE_URL}/ScoreMate`,
       },
       {
         source: "/ScoreMate/:path*",
-        destination: `${SCOREMATE_URL}/:path*`,
+        destination: `${SCOREMATE_URL}/ScoreMate/:path*`,
       },
     ];
   },
