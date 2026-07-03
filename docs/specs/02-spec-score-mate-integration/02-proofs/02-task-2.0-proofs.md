@@ -39,11 +39,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/ScoreMate",
-        destination: SCOREMATE_URL,
+        destination: `${SCOREMATE_URL}/ScoreMate`,
       },
       {
         source: "/ScoreMate/:path*",
-        destination: `${SCOREMATE_URL}/:path*`,
+        destination: `${SCOREMATE_URL}/ScoreMate/:path*`,
       },
     ];
   },
@@ -51,6 +51,8 @@ const nextConfig: NextConfig = {
 
 export default nextConfig;
 ```
+
+> **Note:** Destination includes `/ScoreMate` prefix because ScoreMate has `basePath: '/ScoreMate'` — all its routes live under that prefix. Fixed in commit `63729f9`.
 
 ---
 

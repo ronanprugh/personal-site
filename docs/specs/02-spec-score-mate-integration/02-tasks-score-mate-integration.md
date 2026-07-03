@@ -79,7 +79,7 @@
 - [x] 2.3 Run `pnpm lint` and `pnpm format:check` locally. If format check fails, run `pnpm format` and stage the formatted file.
 - [x] 2.4 Run `pnpm test:ci` locally to confirm no test regressions.
 - [x] 2.5 Commit using Conventional Commits: `feat: add ScoreMate URL rewrite to next.config.ts`. Include in the commit body: `Related to T2.1 in Spec 02-spec-score-mate-integration`.
-- [ ] 2.6 Push the commit and confirm the portfolio's Vercel deployment completes successfully (check the Vercel dashboard for a green "Ready" status).
+- [x] 2.6 Push the commit and confirm the portfolio's Vercel deployment completes successfully (check the Vercel dashboard for a green "Ready" status).
 - [ ] 2.6a Open the GitHub Actions tab for this repo and locate the CI run triggered by the push from step 2.5. Confirm all four checks (Lint, Type-check, Format check, Test) show green. Capture a screenshot of the CI run page and save to `docs/specs/02-spec-score-mate-integration/02-proofs/2.0-ci-pass.png`.
 - [ ] 2.7 Open `https://ronanprugh.com/ScoreMate` in a browser and capture a screenshot saved to `docs/specs/02-spec-score-mate-integration/02-proofs/2.0-scoremate-root.png`.
 - [ ] 2.8 Navigate to a deep path inside ScoreMate (e.g., sign-in page, dashboard, or any route one level below root) and capture a screenshot saved to `02-proofs/2.0-scoremate-deep-path.png`.
@@ -88,7 +88,7 @@
 
 ---
 
-### [ ] 3.0 Configure ScoreMate `basePath` and Update Vercel Environment Variables
+### [~] 3.0 Configure ScoreMate `basePath` and Update Vercel Environment Variables
 
 **Context:** Without `basePath: '/ScoreMate'` in ScoreMate's own Next.js config, internal links and static assets will use root-relative paths (`/`), which break when served through the portfolio rewrite. This task is performed entirely in the ScoreMate repository and Vercel dashboard — not the portfolio repo.
 
@@ -100,9 +100,9 @@
 
 #### 3.0 Tasks
 
-- [ ] 3.1 In the ScoreMate repository, open `next.config.js` (or `next.config.ts`) and add `basePath: '/ScoreMate'` to the exported config object.
-- [ ] 3.2 Run the ScoreMate build locally (`pnpm build` or `npm run build`) to confirm no build errors before pushing. Fix any errors before continuing.
-- [ ] 3.3 Commit the `basePath` change in the ScoreMate repo following that repo's commit conventions and push it. This will trigger a Vercel deployment — monitor it until it shows "Ready".
+- [x] 3.1 In the ScoreMate repository, open `next.config.js` (or `next.config.ts`) and add `basePath: '/ScoreMate'` to the exported config object.
+- [x] 3.2 Run the ScoreMate build locally (`pnpm build` or `npm run build`) to confirm no build errors before pushing. Fix any errors before continuing.
+- [x] 3.3 Commit the `basePath` change in the ScoreMate repo following that repo's commit conventions and push it. This will trigger a Vercel deployment — monitor it until it shows "Ready".
 - [ ] 3.4 In the ScoreMate Vercel project settings (Settings → Environment Variables), update the environment variable for auth URL:
   - Variable name: `NEXTAUTH_URL` (NextAuth v4) or `AUTH_URL` (Auth.js v5) — use whichever was found in Task 1.2.
   - Value: the URL confirmed in Task 1.3.
@@ -115,7 +115,7 @@
 
 ---
 
-### [ ] 4.0 Update Google OAuth Callback URI and Verify End-to-End Auth Flow
+### [~] 4.0 Update Google OAuth Callback URI and Verify End-to-End Auth Flow
 
 **Context:** The Google Cloud Console OAuth 2.0 client must have the new `ronanprugh.com`-based callback URI added before Google sign-in will work through the rewrite. Keep the old Vercel-subdomain URI in place during the cutover, then remove it once the new flow is confirmed. This task involves only the Google Cloud Console and a browser — no code changes.
 
@@ -127,11 +127,11 @@
 
 #### 4.0 Tasks
 
-- [ ] 4.1 Open [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials → click the OAuth 2.0 Client ID used by ScoreMate.
-- [ ] 4.2 Under "Authorized redirect URIs", click "Add URI" and enter:
+- [x] 4.1 Open [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials → click the OAuth 2.0 Client ID used by ScoreMate.
+- [x] 4.2 Under "Authorized redirect URIs", click "Add URI" and enter:
       `https://ronanprugh.com/ScoreMate/api/auth/callback/google`
       (Use the exact path confirmed by Task 1.3 — adjust if Auth.js v5 uses a different callback path.)
-- [ ] 4.3 Save the client. **Do NOT remove the old Vercel-subdomain callback URI yet** — it keeps the old direct URL working during the transition.
+- [x] 4.3 Save the client. **Do NOT remove the old Vercel-subdomain callback URI yet** — it keeps the old direct URL working during the transition.
 - [ ] 4.4 Open `https://ronanprugh.com/ScoreMate` in a fresh private/incognito browser window (to avoid cached session state).
 - [ ] 4.5 Click "Sign in with Google" and complete the OAuth flow end-to-end. Confirm the post-auth redirect lands back on `ronanprugh.com/ScoreMate/...`.
 - [ ] 4.6 Capture the three-frame screenshot sequence (sign-in page → Google picker → post-auth) and save as `02-proofs/4.0-oauth-step1-signin-page.png`, `4.0-oauth-step2-google-picker.png`, `4.0-oauth-step3-post-auth.png`. Crop or redact any personal Google account details visible in the screenshots.
