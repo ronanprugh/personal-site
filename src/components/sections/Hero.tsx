@@ -24,10 +24,10 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="mx-auto flex max-w-4xl flex-col items-center gap-7 px-6 py-12 sm:flex-row sm:items-center sm:gap-10 md:py-16"
+      className="mx-auto flex max-w-4xl flex-col items-center gap-5 px-6 py-8 sm:flex-row sm:items-center sm:gap-8 md:py-10"
     >
       {/* Headshot */}
-      <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-[var(--border)] sm:h-36 sm:w-36">
+      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-[var(--border)] sm:h-28 sm:w-28">
         <Image
           src="/headshot.png"
           alt={`${profile.name} headshot`}
@@ -44,12 +44,12 @@ export function Hero() {
         </p>
 
         {/* Name */}
-        <h1 className="mb-3 font-serif text-4xl font-medium leading-[1.05] tracking-tight text-[var(--foreground)] md:text-5xl">
+        <h1 className="mb-2.5 font-serif text-3xl font-medium leading-[1.05] tracking-tight text-[var(--foreground)] md:text-4xl">
           {profile.name}
         </h1>
 
         {/* Tagline */}
-        <p className="mb-7 max-w-xl text-base leading-relaxed text-[var(--muted)]">
+        <p className="mb-5 max-w-xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
           {profile.tagline}
         </p>
 
