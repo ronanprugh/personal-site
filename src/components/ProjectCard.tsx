@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -14,53 +14,92 @@ function GitHubIcon({ size = 15 }: { size?: number }) {
   );
 }
 
+function ProjectIcon({ icon }: { icon: Project["icon"] }) {
+  const common = {
+    width: 20,
+    height: 20,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  if (icon === "bars") {
+    return (
+      <svg {...common}>
+        <path d="M3 3v18h18" />
+        <path d="M18 17V9" />
+        <path d="M13 17V5" />
+        <path d="M8 17v-4" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+    </svg>
+  );
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="flex flex-col rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 transition-colors hover:border-[var(--accent)]">
-      {/* Title links through to the project detail page */}
-      <Link
-        href={`/projects/${project.slug}`}
-        className="group mb-2 inline-flex items-center gap-1"
-      >
-        <h3 className="text-lg font-semibold text-[var(--foreground)] transition-colors group-hover:text-[var(--accent)]">
-          {project.name}
-        </h3>
-        <ArrowUpRight
-          size={16}
-          className="text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]"
-        />
-      </Link>
+    <article className="flex flex-col gap-3 border-b border-[var(--border)] py-6 last:border-0 sm:flex-row sm:items-start sm:gap-4">
+      <div className="flex min-w-0 flex-1 gap-4">
+        {/* Accent-tinted icon square */}
+        <span
+          aria-hidden="true"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg"
+          style={{
+            background: `var(--tint-${project.accent}-bg)`,
+            color: `var(--tint-${project.accent}-fg)`,
+          }}
+        >
+          <ProjectIcon icon={project.icon} />
+        </span>
 
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-[var(--muted)]">
-        {project.shortDescription}
-      </p>
-
-      {/* Tech line — monospace for an editorial, code-forward feel */}
-      <p className="mb-5 font-mono text-xs text-[var(--muted)]">
-        {project.techStack.slice(0, 4).join(" · ")}
-        {project.techStack.length > 4 && ` · +${project.techStack.length - 4}`}
-      </p>
+        <div className="min-w-0">
+          {/* Title links through to the project detail page */}
+          <Link href={`/projects/${project.slug}`} className="group inline-flex items-center gap-1">
+            <h3 className="font-semibold text-[var(--foreground)] transition-colors group-hover:text-[var(--accent)]">
+              {project.name}
+            </h3>
+            <ArrowUpRight
+              size={15}
+              className="text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]"
+            />
+          </Link>
+          <p className="mt-1 text-sm leading-relaxed text-[var(--muted)]">
+            {project.shortDescription}
+          </p>
+          <p className="mt-2 font-mono text-xs text-[var(--muted)]">
+            {project.techStack.slice(0, 3).join(" · ")}
+          </p>
+        </div>
+      </div>
 
       {/* Actions: visit the live site and read the source */}
-      <div className="flex flex-wrap gap-2.5">
+      <div className="flex shrink-0 gap-2 pl-14 sm:flex-col sm:pl-0">
         {project.demoUrl && (
           <a
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex min-h-10 items-center gap-2 rounded-lg bg-[var(--accent-fill)] px-4 text-sm font-medium text-[var(--accent-on-fill)] transition-opacity hover:opacity-90"
+            className="flex min-h-9 items-center justify-center gap-1.5 rounded-md bg-[var(--accent-fill)] px-3.5 text-xs font-medium text-[var(--accent-on-fill)] transition-opacity hover:opacity-90"
           >
-            <ExternalLink size={15} />
             Visit site
+            <ArrowRight size={13} />
           </a>
         )}
         <a
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex min-h-10 items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          className="flex min-h-9 items-center justify-center gap-1.5 rounded-md border border-[var(--border)] px-3.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
         >
-          <GitHubIcon size={15} />
+          <GitHubIcon size={13} />
           GitHub
         </a>
       </div>

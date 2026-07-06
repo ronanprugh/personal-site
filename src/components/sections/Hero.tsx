@@ -24,7 +24,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 py-20 sm:flex-row sm:items-center sm:gap-10 md:py-28"
+      className="mx-auto flex max-w-4xl flex-col items-center gap-7 px-6 py-12 sm:flex-row sm:items-center sm:gap-10 md:py-16"
     >
       {/* Headshot */}
       <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-[var(--border)] sm:h-36 sm:w-36">

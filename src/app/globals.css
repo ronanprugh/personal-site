@@ -22,6 +22,11 @@
   --muted: #b0a796;
   --card: #1b1813;
   --border: #302a20;
+  /* Per-project icon tints */
+  --tint-amber-bg: #2a2013;
+  --tint-amber-fg: #fac775;
+  --tint-coral-bg: #2a1710;
+  --tint-coral-fg: #f0997b;
 }
 
 .light {
@@ -33,6 +38,11 @@
   --muted: #5a5346; /* warm gray body */
   --card: #ffffff;
   --border: #e6dfd1;
+  /* Per-project icon tints */
+  --tint-amber-bg: #faeeda;
+  --tint-amber-fg: #854f0b;
+  --tint-coral-bg: #faece7;
+  --tint-coral-fg: #993c1d;
 }
 
 html {

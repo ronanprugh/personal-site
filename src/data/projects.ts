@@ -7,6 +7,8 @@ export interface Project {
   githubUrl: string;
   demoUrl?: string;
   imagePath: string;
+  accent: "amber" | "coral";
+  icon: "pen" | "bars";
 }
 
 export const projects: Project[] = [
@@ -29,6 +31,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ronanprugh/score-mate",
     demoUrl: "https://ronanprugh.com/ScoreMate",
     imagePath: "/projects/score-mate.png",
+    accent: "amber",
+    icon: "pen",
   },
   {
     slug: "espn-fantasy-stats",
@@ -52,5 +56,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ronanprugh/espn_fantasy_stats",
     demoUrl: "https://ronanprugh.com/espn-fantasy-stats",
     imagePath: "/projects/espn-fantasy-stats.png",
+    accent: "coral",
+    icon: "bars",
   },
 ];
