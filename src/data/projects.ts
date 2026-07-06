@@ -27,6 +27,7 @@ export const projects: Project[] = [
       "Vercel",
     ],
     githubUrl: "https://github.com/ronanprugh/score-mate",
+    demoUrl: "https://ronanprugh.com/ScoreMate",
     imagePath: "/projects/score-mate.png",
   },
   {
@@ -49,7 +50,7 @@ export const projects: Project[] = [
       "Vercel",
     ],
     githubUrl: "https://github.com/ronanprugh/espn_fantasy_stats",
-    demoUrl: "https://espn-fantasy-stats.vercel.app",
+    demoUrl: "https://ronanprugh.com/espn-fantasy-stats",
     imagePath: "/projects/espn-fantasy-stats.png",
   },
 ];

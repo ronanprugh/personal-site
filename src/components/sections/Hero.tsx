@@ -24,18 +24,10 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center px-6 py-24 text-center md:py-32"
+      className="mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 py-20 sm:flex-row sm:items-center sm:gap-10 md:py-28"
     >
-      {/* Subtle gradient blob */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
-      >
-        <div className="h-96 w-96 rounded-full bg-[var(--accent)] opacity-10 blur-3xl" />
-      </div>
-
       {/* Headshot */}
-      <div className="relative mb-8 h-36 w-36 overflow-hidden rounded-full border-2 border-[var(--border)] shadow-xl">
+      <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-[var(--border)] sm:h-36 sm:w-36">
         <Image
           src="/headshot.png"
           alt={`${profile.name} headshot`}
@@ -45,44 +37,53 @@ export function Hero() {
         />
       </div>
 
-      {/* Name */}
-      <h1 className="mb-3 text-4xl font-bold tracking-tight text-[var(--foreground)] md:text-5xl">
-        {profile.name}
-      </h1>
+      <div className="text-center sm:text-left">
+        {/* Eyebrow */}
+        <p className="mb-2 text-xs font-medium uppercase tracking-[0.15em] text-[var(--accent)]">
+          Software Engineer
+        </p>
 
-      {/* Tagline */}
-      <p className="mb-8 max-w-xl text-base text-[var(--muted)] md:text-lg">{profile.tagline}</p>
+        {/* Name */}
+        <h1 className="mb-3 font-serif text-4xl font-medium leading-[1.05] tracking-tight text-[var(--foreground)] md:text-5xl">
+          {profile.name}
+        </h1>
 
-      {/* CTAs */}
-      <div className="hero-ctas flex flex-wrap items-center justify-center gap-3">
-        <a
-          href={profile.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex min-h-11 items-center gap-2 rounded-full bg-[var(--foreground)] px-5 text-sm font-medium text-[var(--background)] transition-opacity hover:opacity-80"
-        >
-          <GitHubIcon size={16} />
-          GitHub
-        </a>
+        {/* Tagline */}
+        <p className="mb-7 max-w-xl text-base leading-relaxed text-[var(--muted)]">
+          {profile.tagline}
+        </p>
 
-        <a
-          href={profile.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex min-h-11 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-        >
-          <LinkedInIcon size={16} />
-          LinkedIn
-        </a>
+        {/* CTAs */}
+        <div className="hero-ctas flex flex-wrap items-center justify-center gap-2.5 sm:justify-start">
+          <a
+            href={profile.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-11 items-center gap-2 rounded-lg bg-[var(--foreground)] px-4 text-sm font-medium text-[var(--background)] transition-opacity hover:opacity-85"
+          >
+            <GitHubIcon size={16} />
+            GitHub
+          </a>
 
-        <button
-          onClick={() => window.print()}
-          className="print-hide flex min-h-11 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] px-5 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-          aria-label="Print or save resume as PDF"
-        >
-          <Printer size={16} />
-          Print / Save PDF
-        </button>
+          <a
+            href={profile.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-11 items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          >
+            <LinkedInIcon size={16} />
+            LinkedIn
+          </a>
+
+          <button
+            onClick={() => window.print()}
+            className="print-hide flex min-h-11 items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            aria-label="Print or save resume as PDF"
+          >
+            <Printer size={16} />
+            Print / Save PDF
+          </button>
+        </div>
       </div>
     </section>
   );

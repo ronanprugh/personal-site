@@ -3,7 +3,9 @@ import { education } from "@/data/education";
 export function Education() {
   return (
     <section id="education" className="mx-auto max-w-4xl px-6 py-16">
-      <h2 className="mb-8 text-2xl font-bold tracking-tight text-[var(--foreground)]">Education</h2>
+      <h2 className="mb-8 font-serif text-3xl font-medium tracking-tight text-[var(--foreground)]">
+        Education
+      </h2>
 
       <div className="space-y-6">
         {education.map((edu) => (
