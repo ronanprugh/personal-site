@@ -1,6 +1,7 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { CurrentRole } from "@/components/sections/CurrentRole";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
 import { Skills } from "@/components/sections/Skills";
@@ -14,6 +15,10 @@ export default function Home() {
         <Hero />
         <div className="border-t border-[var(--border)]">
           <About />
+          <CurrentRole />
+        </div>
+        <div className="border-t border-[var(--border)]">
+          <Projects />
         </div>
         <div className="border-t border-[var(--border)]">
           <Experience />
@@ -23,9 +28,6 @@ export default function Home() {
         </div>
         <div className="border-t border-[var(--border)]">
           <Skills />
-        </div>
-        <div className="border-t border-[var(--border)]">
-          <Projects />
         </div>
       </main>
     </>
