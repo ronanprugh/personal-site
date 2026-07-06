@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Printer } from "lucide-react";
 import { profile } from "@/data/profile";
+import { generateResumePdf } from "@/lib/generateResumePdf";
 
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -77,7 +78,7 @@ export function Hero() {
           </a>
 
           <button
-            onClick={() => window.print()}
+            onClick={() => generateResumePdf()}
             className="print-hide flex min-h-11 items-center gap-2 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
             aria-label="Print or save resume as PDF"
           >
