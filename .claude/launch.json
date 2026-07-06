@@ -12,6 +12,20 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--dir", "/Users/rprugh/repos/score-mate", "dev"],
       "port": 3000
+    },
+    {
+      "name": "espn-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/rprugh/repos/espn_fantasy_stats/frontend",
+        "run",
+        "preview",
+        "--",
+        "--port",
+        "4173"
+      ],
+      "port": 4173
     }
   ]
 }
