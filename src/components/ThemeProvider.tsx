@@ -11,26 +11,26 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-function resolveInitialTheme(): Theme {
-  if (typeof window === "undefined") return "dark"; // SSR — default matches layout
-  const stored = localStorage.getItem("theme");
-  if (stored === "dark" || stored === "light") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
 function applyTheme(theme: Theme) {
   document.documentElement.classList.remove("dark", "light");
   document.documentElement.classList.add(theme);
+  // Persist for SSR on the next visit — read by the root layout via cookies().
+  document.cookie = `theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Lazy initializer reads localStorage synchronously on client — no effect needed
-  const [theme, setTheme] = useState<Theme>(resolveInitialTheme);
+export function ThemeProvider({
+  initialTheme,
+  children,
+}: {
+  initialTheme: Theme;
+  children: React.ReactNode;
+}) {
+  // Seeded from the SSR cookie value so client and server agree — no flash.
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   function toggleTheme() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     setTheme(next);
-    localStorage.setItem("theme", next);
     applyTheme(next);
   }
 

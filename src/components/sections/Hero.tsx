@@ -32,6 +32,7 @@ export function Hero() {
           src="/headshot.png"
           alt={`${profile.name} headshot`}
           fill
+          sizes="(min-width: 640px) 112px, 96px"
           className="object-cover"
           priority
         />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Geist, Newsreader } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
@@ -15,6 +16,7 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ronanprugh.com"),
   title: "Ronan Prugh — Software Engineer",
   description:
     "Software engineer building cloud billing systems, AI-powered developer tools, and full-stack products. Michigan CS '23.",
@@ -44,27 +46,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Read the persisted theme from a cookie during SSR so the correct class is
+  // present in the initial HTML — no client-side flash, no inline script.
+  const theme = (await cookies()).get("theme")?.value === "light" ? "light" : "dark";
+
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${newsreader.variable} scroll-smooth dark`}
+      className={`${geistSans.variable} ${newsreader.variable} scroll-smooth ${theme}`}
       suppressHydrationWarning
     >
-      <head>
-        {/* No-flash theme script: reads localStorage before React hydrates */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=t||(d?'dark':'light');document.documentElement.classList.remove('dark','light');document.documentElement.classList.add(theme);}catch(e){}})();`,
-          }}
-        />
-      </head>
       <body className="min-h-dvh flex flex-col antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider initialTheme={theme}>{children}</ThemeProvider>
       </body>
     </html>
   );
