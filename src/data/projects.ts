@@ -6,7 +6,6 @@ export interface Project {
   techStack: string[];
   githubUrl: string;
   demoUrl?: string;
-  imagePath: string;
   accent: "amber" | "coral" | "teal";
   icon: "pen" | "bars" | "train";
 }
@@ -30,7 +29,6 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ronanprugh/score-mate",
     demoUrl: "https://ronanprugh.com/ScoreMate",
-    imagePath: "/projects/score-mate.png",
     accent: "amber",
     icon: "pen",
   },
@@ -55,7 +53,6 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ronanprugh/espn_fantasy_stats",
     demoUrl: "https://ronanprugh.com/espn-fantasy-stats",
-    imagePath: "/projects/espn-fantasy-stats.png",
     accent: "coral",
     icon: "bars",
   },
@@ -76,7 +73,6 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/ronanprugh/railrat-pretty-view",
     demoUrl: "https://ronanprugh.com/RRPrettyView",
-    imagePath: "/projects/railrat-pretty-view.png",
     accent: "teal",
     icon: "train",
   },

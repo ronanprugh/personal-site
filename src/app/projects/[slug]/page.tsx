@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
@@ -55,16 +54,6 @@ export default async function ProjectPage({ params }: Props) {
       </h1>
 
       <p className="mb-8 text-lg text-[var(--muted)]">{project.shortDescription}</p>
-
-      <div className="mb-8 overflow-hidden rounded-xl border border-[var(--border)]">
-        <Image
-          src={project.imagePath}
-          alt={`${project.name} project screenshot`}
-          width={800}
-          height={450}
-          className="w-full object-cover"
-        />
-      </div>
 
       <div className="mb-8 space-y-4 leading-relaxed text-[var(--foreground)]">
         {project.fullDescription.split("\n\n").map((paragraph, i) => (
