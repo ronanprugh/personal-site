@@ -36,6 +36,19 @@ function ProjectIcon({ icon }: { icon: Project["icon"] }) {
       </svg>
     );
   }
+  if (icon === "train") {
+    return (
+      <svg {...common}>
+        <path d="M4 15.5V5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v10.5" />
+        <path d="M4 15.5a2.5 2.5 0 1 0 5 0" />
+        <path d="M15 15.5a2.5 2.5 0 1 0 5 0" />
+        <path d="M9 15.5h6" />
+        <path d="M4 11h16" />
+        <path d="M7 22l-2-4" />
+        <path d="M17 22l2-4" />
+      </svg>
+    );
+  }
   return (
     <svg {...common}>
       <path d="M12 20h9" />

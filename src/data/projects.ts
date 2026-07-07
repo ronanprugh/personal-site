@@ -7,8 +7,8 @@ export interface Project {
   githubUrl: string;
   demoUrl?: string;
   imagePath: string;
-  accent: "amber" | "coral";
-  icon: "pen" | "bars";
+  accent: "amber" | "coral" | "teal";
+  icon: "pen" | "bars" | "train";
 }
 
 export const projects: Project[] = [
@@ -58,5 +58,26 @@ export const projects: Project[] = [
     imagePath: "/projects/espn-fantasy-stats.png",
     accent: "coral",
     icon: "bars",
+  },
+  {
+    slug: "railrat-pretty-view",
+    name: "RailRat Pretty View",
+    shortDescription:
+      "Mobile-first PWA that renders Amtrak train data from railrat.net in a friendlier, glanceable UI — installable on iOS and Android.",
+    fullDescription:
+      "RailRat Pretty View is a two-piece project: a Cloudflare Worker that scrapes railrat.net's Amtrak HTML and serves clean JSON, and a Vite + React + TypeScript PWA that renders that data in a mobile-first layout. Search for any Amtrak train by number, see station stops with arrival/departure times, delays, and status at a glance. Installable as a home-screen app on iOS and Android via the native share menu.",
+    techStack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Cloudflare Workers",
+      "Cloudflare Pages",
+    ],
+    githubUrl: "https://github.com/ronanprugh/railrat-pretty-view",
+    demoUrl: "https://ronanprugh.com/RRPrettyView",
+    imagePath: "/projects/railrat-pretty-view.png",
+    accent: "teal",
+    icon: "train",
   },
 ];

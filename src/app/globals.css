@@ -27,6 +27,8 @@
   --tint-amber-fg: #fac775;
   --tint-coral-bg: #2a1710;
   --tint-coral-fg: #f0997b;
+  --tint-teal-bg: #0f2a2a;
+  --tint-teal-fg: #5eead4;
 }
 
 .light {
@@ -43,6 +45,8 @@
   --tint-amber-fg: #854f0b;
   --tint-coral-bg: #faece7;
   --tint-coral-fg: #993c1d;
+  --tint-teal-bg: #e0f7f5;
+  --tint-teal-fg: #0f766e;
 }
 
 html {
