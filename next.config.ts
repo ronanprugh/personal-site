@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const SCOREMATE_URL = "https://score-mate-ronanprughs-projects.vercel.app";
 const ESPN_FANTASY_URL = "https://espn-fantasy-stats.vercel.app";
+const RAILRAT_URL = "https://railrat-pretty-view.pages.dev";
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -33,6 +34,15 @@ const nextConfig: NextConfig = {
       {
         source: "/espn-fantasy-stats/:path*",
         destination: `${ESPN_FANTASY_URL}/espn-fantasy-stats/:path*`,
+      },
+      // RailRat Pretty View — Vite PWA on Cloudflare Pages
+      {
+        source: "/RRPrettyView",
+        destination: `${RAILRAT_URL}/RRPrettyView/`,
+      },
+      {
+        source: "/RRPrettyView/:path*",
+        destination: `${RAILRAT_URL}/RRPrettyView/:path*`,
       },
     ];
   },
