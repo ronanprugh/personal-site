@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const SCOREMATE_URL = "https://score-mate-ronanprughs-projects.vercel.app";
 const ESPN_FANTASY_URL = "https://espn-fantasy-stats.vercel.app";
 const RAILRAT_URL = "https://railrat-pretty-view.pages.dev";
+// NOTE: confirm this once the Vercel project exists — it follows the same
+// team-scoped pattern as ScoreMate, but the real alias is whatever Vercel
+// assigns on first deploy.
+const DAILY_GAMES_URL = "https://daily-games-hub-ronanprughs-projects.vercel.app";
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -34,6 +38,17 @@ const nextConfig: NextConfig = {
       {
         source: "/espn-fantasy-stats/:path*",
         destination: `${ESPN_FANTASY_URL}/espn-fantasy-stats/:path*`,
+      },
+      // Daily Games Hub — Next.js app with basePath "/games", so it already
+      // emits prefixed asset and action URLs. Server actions POST back to
+      // the same prefixed paths, so the :path* rule covers them.
+      {
+        source: "/games",
+        destination: `${DAILY_GAMES_URL}/games`,
+      },
+      {
+        source: "/games/:path*",
+        destination: `${DAILY_GAMES_URL}/games/:path*`,
       },
       // RailRat Pretty View — Vite PWA on Cloudflare Pages
       {
